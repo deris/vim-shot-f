@@ -36,7 +36,11 @@ noremap <silent><expr> <Plug>(shot-f-F)  shot_f#shot_F()
 noremap <silent><expr> <Plug>(shot-f-t)  shot_f#shot_t()
 noremap <silent><expr> <Plug>(shot-f-T)  shot_f#shot_T()
 
-if !get(g:, 'shot_f_no_default_key_mappings', 0)
+if !get(g:, 'shot_f_no_default_key_mappings', 0) &&
+  \!hasmapto('<Plug>(shot-f-f)') &&
+  \!hasmapto('<Plug>(shot-f-F)') &&
+  \!hasmapto('<Plug>(shot-f-t)') &&
+  \!hasmapto('<Plug>(shot-f-T)')
   nmap f  <Plug>(shot-f-f)
   nmap F  <Plug>(shot-f-F)
   nmap t  <Plug>(shot-f-t)
