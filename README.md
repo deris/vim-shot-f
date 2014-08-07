@@ -1,4 +1,4 @@
-vim-shot-f
+shot-f
 ===
 
 highlight the character which can move directly to (by `f`,`F`,`t`,`T`).
@@ -6,7 +6,7 @@ highlight the character which can move directly to (by `f`,`F`,`t`,`T`).
 Screenshot
 ---
 
-[screenshot](http://gifzo.net/8BwlnBOfR7.gif)
+![screenshot](http://gifzo.net/8BwlnBOfR7.gif)
 
 
 Usage
