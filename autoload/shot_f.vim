@@ -54,6 +54,9 @@ function! s:shot_f(ft)
       call s:highlight_one_of_each_char(a:ft, a:ft =~# '\l', cnt)
 
       let cn = getchar()
+      if s:is_special_char(cn)
+        return ''
+      endif
       let c = type(cn) == type(0) ? nr2char(cn) : cn
       if exists('g:shot_f_increment_count_key') &&
         \c ==# g:shot_f_increment_count_key
@@ -105,6 +108,10 @@ function! s:disable_highlight()
   for h in filter(getmatches(), 'v:val.group ==# "ShotFGraph" || v:val.group ==# "ShotFBlank"')
     call matchdelete(h.id)
   endfor
+endfunction
+
+function! s:is_special_char(c)
+  return type(a:c) == type('') && char2nr(a:c) == 128
 endfunction
 
 augroup plugin-shot-f-highlight
