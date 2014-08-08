@@ -55,8 +55,8 @@ if !get(g:, 'shot_f_no_default_key_mappings', 0) &&
   omap T  <Plug>(shot-f-T)
 end
 
-let g:shot_f_increment_count_key = get(g:, 'shot_f_increment_count_key', "\<C-k>")
-let g:shot_f_decrement_count_key = get(g:, 'shot_f_decrement_count_key', "\<C-j>")
+let g:shot_f_increment_count_key = get(g:, 'shot_f_increment_count_key', "\<CR>")
+let g:shot_f_decrement_count_key = get(g:, 'shot_f_decrement_count_key', "\<BS>")
 
 
 let &cpo = s:save_cpo
