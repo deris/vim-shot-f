@@ -79,7 +79,7 @@ function! s:highlight_one_of_each_char(ft, forward, count)
     let cur_char = line[cur_col]
     let char_dict[cur_char] = get(char_dict, cur_char, 0) + 1
     if char_dict[cur_char] == a:count
-      call matchadd(cur_char =~ '[[:blank:]]' ? 'ShotFBlank' : 'ShotFGraph', printf('\%%%dl\%%%dc', lnum, cur_col+1))
+      call matchadd('ShotFChar', printf('\%%%dl\%%%dc', lnum, cur_col+1))
     endif
   endfor
 
@@ -87,19 +87,17 @@ function! s:highlight_one_of_each_char(ft, forward, count)
 endfunction
 
 function! s:disable_highlight()
-  for h in filter(getmatches(), 'v:val.group ==# "ShotFGraph" || v:val.group ==# "ShotFBlank"')
+  for h in filter(getmatches(), 'v:val.group ==# "ShotFChar"')
     call matchdelete(h.id)
   endfor
 endfunction
 
 augroup plugin-shot-f-highlight
   autocmd!
-  autocmd ColorScheme * highlight default ShotFGraph ctermfg=red ctermbg=NONE cterm=bold guifg=red guibg=NONE gui=bold
-  autocmd ColorScheme * highlight default ShotFBlank ctermfg=NONE ctermbg=red cterm=NONE guifg=NONE guibg=red gui=NONE
+  autocmd ColorScheme * highlight default ShotFChar ctermfg=red ctermbg=NONE cterm=bold,underline guifg=red guibg=NONE gui=bold,underline
 augroup END
 
-highlight default ShotFGraph ctermfg=red ctermbg=NONE cterm=bold guifg=red guibg=NONE gui=bold
-highlight default ShotFBlank ctermfg=NONE ctermbg=red cterm=bold guifg=NONE guibg=red gui=bold
+highlight default ShotFChar ctermfg=red ctermbg=NONE cterm=bold,underline guifg=red guibg=NONE gui=bold,underline
 
 "}}}
 
