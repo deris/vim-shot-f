@@ -96,7 +96,6 @@ augroup plugin-shot-f-highlight
   autocmd!
   autocmd ColorScheme * highlight default ShotFGraph ctermfg=red ctermbg=NONE cterm=bold guifg=red guibg=NONE gui=bold
   autocmd ColorScheme * highlight default ShotFBlank ctermfg=NONE ctermbg=red cterm=NONE guifg=NONE guibg=red gui=NONE
-  autocmd CursorMoved,CursorMovedI * call s:disable_highlight()
 augroup END
 
 highlight default ShotFGraph ctermfg=red ctermbg=NONE cterm=bold guifg=red guibg=NONE gui=bold
