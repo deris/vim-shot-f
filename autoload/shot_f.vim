@@ -48,6 +48,11 @@ endfunction
 " Private {{{1
 
 function! s:shot_f(ft)
+  let gcr_save = &guicursor
+  set guicursor=n:block-NONE
+  let t_ve_save = &t_ve
+  set t_ve=
+  let id = matchadd('ShotFCursor', '\%#')
   try
     let cnt = v:count1
     while (1)
@@ -72,6 +77,10 @@ function! s:shot_f(ft)
     return "\<Esc>" . cnt . a:ft . c
   finally
     call s:disable_highlight()
+    call matchdelete(id)
+    set guicursor&
+    let &guicursor = gcr_save
+    let &t_ve = t_ve_save
   endtry
 endfunction
 
@@ -115,6 +124,7 @@ augroup END
 
 highlight default ShotFGraph ctermfg=red ctermbg=NONE cterm=bold guifg=red guibg=NONE gui=bold
 highlight default ShotFBlank ctermfg=NONE ctermbg=red cterm=bold guifg=NONE guibg=red gui=bold
+highlight link ShotFCursor Cursor
 
 "}}}
 
