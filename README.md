@@ -1,7 +1,7 @@
 shot-f
 ===
 
-highlight the character which can move directly to (by `f`,`F`,`t`,`T`).
+shot-f highlights the characters where the cursor can move directly (by `f`,`F`,`t`,`T`).
 
 Screenshot
 ---
@@ -12,12 +12,12 @@ Screenshot
 Usage
 ---
 
-You can type `f`, `F`, `t`, `T` and highlight the character which can move directly to(when `t` and `T`, highlight before the character to move).
+When you type `f`, `F`, `t`, `T`, it highlights the characters where the cursor can move directly (when `t` and `T`, highlights before the character to move).
 
-If you would like to change default key mappings, write following settings to your .vimrc.
+If you would like to change default key mappings, write following settings to your `.vimrc`.
 
 ```vim
-" if you want to map prefix comma, you can use following settings.
+" if you want to map comma as prefix, you can use following settings.
 
 " disable default key mappings
 let g:shot_f_no_default_key_mappings = 1
