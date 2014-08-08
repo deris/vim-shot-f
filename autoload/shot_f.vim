@@ -49,12 +49,27 @@ endfunction
 
 function! s:shot_f(ft)
   try
-    call s:highlight_one_of_each_char(a:ft, a:ft =~# '\l', v:count1)
+    let cnt = v:count1
+    while (1)
+      call s:highlight_one_of_each_char(a:ft, a:ft =~# '\l', cnt)
 
-    let cn = getchar()
-    let c = type(cn) == type(0) ? nr2char(cn) : cn
+      let cn = getchar()
+      let c = type(cn) == type(0) ? nr2char(cn) : cn
+      if exists('g:shot_f_increment_count_key') &&
+        \c ==# g:shot_f_increment_count_key
+        let cnt += 1
+      elseif exists('g:shot_f_decrement_count_key') &&
+        \c ==# g:shot_f_decrement_count_key
+        let cnt -= 1
+      else
+        break
+      endif
+      let cnt = cnt < 1 ? 1 : cnt
 
-    return a:ft . c
+      call s:disable_highlight()
+    endwhile
+
+    return "\<Esc>" . cnt . a:ft . c
   finally
     call s:disable_highlight()
   endtry
