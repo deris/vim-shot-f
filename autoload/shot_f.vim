@@ -66,7 +66,11 @@ function! s:shot_f(ft)
         break
       endif
       let cnt += ac
-      let cnt = cnt < 1 ? 1 : cnt
+      if cnt < 1
+        let cnt = 1
+      elseif cnt > s:max_count
+        let cnt = s:max_count
+      endif
 
       call s:disable_highlight()
     endwhile
@@ -89,6 +93,7 @@ function! s:initialize()
   let s:t_ve_save = &t_ve
   set t_ve=
   let s:cursor_id = matchadd('ShotFCursor', '\%#')
+  let s:max_count = 1
 endfunction
 
 function! s:finalize()
@@ -120,6 +125,7 @@ function! s:highlight_one_of_each_char(ft, forward, count)
     if char_dict[cur_char] == a:count
       call matchadd(cur_char =~ '[[:blank:]]' ? 'ShotFBlank' : 'ShotFGraph', printf('\%%%dl\%%%dc', lnum, cur_col+1))
     endif
+    let s:max_count = char_dict[cur_char] > s:max_count ? char_dict[cur_char] : s:max_count
   endfor
 
   redraw!
