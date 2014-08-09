@@ -59,15 +59,12 @@ function! s:shot_f(ft)
         return ''
       endif
       let c = type(cn) == type(0) ? nr2char(cn) : cn
-      if exists('g:shot_f_increment_count_key') &&
-        \c ==# g:shot_f_increment_count_key
-        let cnt += 1
-      elseif exists('g:shot_f_decrement_count_key') &&
-        \c ==# g:shot_f_decrement_count_key
-        let cnt -= 1
-      else
+
+      let ac = s:get_count_for_adding(c)
+      if ac == 0
         break
       endif
+      let cnt += ac
       let cnt = cnt < 1 ? 1 : cnt
 
       call s:disable_highlight()
@@ -129,6 +126,18 @@ endfunction
 
 function! s:is_special_char(c)
   return type(a:c) == type('') && char2nr(a:c) == 128
+endfunction
+
+function! s:get_count_for_adding(c)
+  if exists('g:shot_f_increment_count_key') &&
+    \a:c ==# g:shot_f_increment_count_key
+    return 1
+  elseif exists('g:shot_f_decrement_count_key') &&
+    \a:c ==# g:shot_f_decrement_count_key
+    return -1
+  else
+    return 0
+  endif
 endfunction
 
 augroup plugin-shot-f-highlight
