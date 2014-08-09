@@ -56,6 +56,9 @@ function! s:shot_f(ft)
       call s:highlight_one_of_each_char(a:ft, a:ft =~# '\l', cnt)
 
       let cn = getchar()
+      if s:unexpected_character(cn)
+        continue
+      endif
       let c = type(cn) == type(0) ? nr2char(cn) : cn
 
       let ac = s:get_count_for_adding(c)
@@ -138,6 +141,13 @@ function! s:get_count_for_adding(c)
   else
     return 0
   endif
+endfunction
+
+" \x80\xfd` is sent at fixed interval.
+" I don't know reason but it's unexpected.
+" So ignore if this character is sent.
+function! s:unexpected_character(c)
+  return a:c ==# "\x80\xfd`"
 endfunction
 
 augroup plugin-shot-f-highlight
