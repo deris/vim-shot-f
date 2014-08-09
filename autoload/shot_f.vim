@@ -48,6 +48,7 @@ endfunction
 " Private {{{1
 
 function! s:shot_f(ft)
+  let mode = mode(1)
   call s:initialize()
   try
     let cnt = v:count1
@@ -70,7 +71,13 @@ function! s:shot_f(ft)
       call s:disable_highlight()
     endwhile
 
-    return "\<Esc>" . cnt . a:ft . c
+    if mode ==# 'n'
+      return "\<Esc>" . cnt . a:ft . c
+    elseif mode ==? 'v' || mode ==# "\<C-v>"
+      return "\<Esc>" . 'gv' . cnt . a:ft . c
+    elseif mode ==# 'no'
+      return "\<Esc>" . cnt . v:operator . a:ft . c
+    endif
   finally
     call s:finalize()
   endtry
