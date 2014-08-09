@@ -48,11 +48,7 @@ endfunction
 " Private {{{1
 
 function! s:shot_f(ft)
-  let gcr_save = &guicursor
-  set guicursor=n:block-NONE
-  let t_ve_save = &t_ve
-  set t_ve=
-  let id = matchadd('ShotFCursor', '\%#')
+  call s:initialize()
   try
     let cnt = v:count1
     while (1)
@@ -79,12 +75,24 @@ function! s:shot_f(ft)
 
     return "\<Esc>" . cnt . a:ft . c
   finally
-    call s:disable_highlight()
-    call matchdelete(id)
-    set guicursor&
-    let &guicursor = gcr_save
-    let &t_ve = t_ve_save
+    call s:finalize()
   endtry
+endfunction
+
+function! s:initialize()
+  let s:gcr_save = &guicursor
+  set guicursor=n:block-NONE
+  let s:t_ve_save = &t_ve
+  set t_ve=
+  let s:cursor_id = matchadd('ShotFCursor', '\%#')
+endfunction
+
+function! s:finalize()
+  call s:disable_highlight()
+  call matchdelete(s:cursor_id)
+  set guicursor&
+  let &guicursor = s:gcr_save
+  let &t_ve = s:t_ve_save
 endfunction
 
 function! s:highlight_one_of_each_char(ft, forward, count)
