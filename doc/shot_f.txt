@@ -1,0 +1,134 @@
+*shot-f.jax*	shot-f highlights the characters where the cursor can move directly (by `f`,`F`,`t`,`T`)
+
+Version 0.1.2
+Copyright (C) 2014 deris <deris0126@gmail.com>
+License: MIT license  {{{
+    Permission is hereby granted, free of charge, to any person obtaining
+    a copy of this software and associated documentation files (the
+    "Software"), to deal in the Software without restriction, including
+    without limitation the rights to use, copy, modify, merge, publish,
+    distribute, sublicense, and/or sell copies of the Software, and to
+    permit persons to whom the Software is furnished to do so, subject to
+    the following conditions:
+
+    The above copyright notice and this permission notice shall be included
+    in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+}}}
+
+CONTENTS					*shot-f-contents*
+
+Introduction		|shot-f-introduction|
+Interface		|shot-f-interface|
+  Key Mappings		  |shot-f-key-mappings|
+  Variables		  |shot-f-variables|
+Examples		|shot-f-examples|
+Bugs			|shot-f-bugs|
+Changelog		|shot-f-changelog|
+
+
+==============================================================================
+INTRODUCTION					*shot-f-introduction*
+
+shot-f highlights the characters where the cursor can move directly (by `f`,`F`,`t`,`T`)
+
+
+Requirements:
+- Vim 7 or later
+
+Latest version:
+https://github.com/deris/vim-shot-f
+
+
+==============================================================================
+INTERFACE					*shot-f-interface*
+
+------------------------------------------------------------------------------
+MAPPINGS					*shot-f-mappings*
+
+<Plug>(shot-f-f)				*<Plug>(shot-f-f)*
+<Plug>(shot-f-F)				*<Plug>(shot-f-F)*
+<Plug>(shot-f-t)				*<Plug>(shot-f-t)*
+<Plug>(shot-f-T)				*<Plug>(shot-f-T)*
+			These mappings are defined in Normal mode, Visual mode
+			and Operator-pending mode.
+
+
+------------------------------------------------------------------------------
+VARIABLES					*shot-f-variables*
+
+g:shot_f_increment_count_key   (default: "\<CR>")
+			If you type this key after executing mapping key,
+			you can increment |[count]| of mapping key
+g:shot_f_decrement_count_key   (default: "\<BS>")
+			If you type this key after executing mapping key,
+			you can decrement [|count]| of mapping key
+
+
+==============================================================================
+EXAMPLES					*shot-f-examples*
+
+" default mapping is following
+nmap f  <Plug>(shot-f-f)
+nmap F  <Plug>(shot-f-F)
+nmap t  <Plug>(shot-f-t)
+nmap T  <Plug>(shot-f-T)
+xmap f  <Plug>(shot-f-f)
+xmap F  <Plug>(shot-f-F)
+xmap t  <Plug>(shot-f-t)
+xmap T  <Plug>(shot-f-T)
+omap f  <Plug>(shot-f-f)
+omap F  <Plug>(shot-f-F)
+omap t  <Plug>(shot-f-t)
+omap T  <Plug>(shot-f-T)
+
+" If you want change mapping, you can write following settings in your vimrc
+let g:shot_f_no_default_key_mappings = 1
+nmap ,f  <Plug>(shot-f-f)
+nmap ,F  <Plug>(shot-f-F)
+nmap ,t  <Plug>(shot-f-t)
+nmap ,T  <Plug>(shot-f-T)
+xmap ,f  <Plug>(shot-f-f)
+xmap ,F  <Plug>(shot-f-F)
+xmap ,t  <Plug>(shot-f-t)
+xmap ,T  <Plug>(shot-f-T)
+omap ,f  <Plug>(shot-f-f)
+omap ,F  <Plug>(shot-f-F)
+omap ,t  <Plug>(shot-f-t)
+omap ,T  <Plug>(shot-f-T)
+
+" If you want change key for incrementing or decrementing count,
+" you can write following settings in your vimrc
+let g:shot_f_increment_count_key = "\<C-k>"
+let g:shot_f_decrement_count_key = "\<C-j>"
+
+
+==============================================================================
+BUGS						*shot-f-bugs*
+
+- Currently, there is no known issue.
+
+
+==============================================================================
+CHANGELOG					*shot-f-changelog*
+
+0.1.2	2014-08-10
+- fixed bugs
+
+0.1.1	2014-08-09
+- add variables for changing key of incrementing or decrementing count
+
+0.1.0	2014-08-08
+- First Version.
+
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:fen:fdl=0:fdm=marker:
+
