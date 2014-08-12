@@ -1,4 +1,4 @@
-*shot-f.jax*	shot-f highlights the characters where the cursor can move directly (by `f`,`F`,`t`,`T`)
+*shot-f.txt*	shot-f highlights the characters where the cursor can move directly (by `f`,`F`,`t`,`T`)
 
 Version 0.1.2
 Copyright (C) 2014 deris <deris0126@gmail.com>
