@@ -1,5 +1,5 @@
 " shot-f - highlight the character which can move directly to (by `f`,`F`,`t`,`T`).
-" Version: 0.1.2
+" Version: 0.1.3
 " Copyright (C) 2014 deris <deris0126@gmail.com>
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining

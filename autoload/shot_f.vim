@@ -1,5 +1,5 @@
 " shot-f - highlight the character which can move directly to (by `f`,`F`,`t`,`T`).
-" Version: 0.1.2
+" Version: 0.1.3
 " Copyright (C) 2014 deris <deris0126@gmail.com>
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
@@ -53,7 +53,7 @@ function! s:shot_f(ft)
   try
     let cnt = v:count1
     while (1)
-      call s:highlight_one_of_each_char(a:ft, a:ft =~# '\l', cnt)
+      call s:highlight_one_of_each_char(a:ft =~# '\l', cnt)
 
       let cn = getchar()
       if s:unexpected_character(cn)
@@ -104,13 +104,13 @@ function! s:finalize()
   let &t_ve = s:t_ve_save
 endfunction
 
-function! s:highlight_one_of_each_char(ft, forward, count)
+function! s:highlight_one_of_each_char(forward, count)
   let line = getline('.')
   let col = col('.') - 1
   let lnum = line('.')
 
-  let start_col = col + 1 + (a:ft ==? 't' ? 1 : 0)
-  let end_col   = col - 1 - (a:ft ==? 't' ? 1 : 0)
+  let start_col = col + 1
+  let end_col   = col - 1
   if (a:forward && start_col + 1 > len(line) - 1) ||
     \(!a:forward && end_col + 1 < 0)
     return
