@@ -6,7 +6,7 @@ shot-f highlights the characters where the cursor can move directly (by `f`,`F`,
 Screenshot
 ---
 
-![screenshot](http://gifzo.net/8BwlnBOfR7.gif)
+![screenshot](https://raw.githubusercontent.com/deris/images/master/vim-shot-f/shot_f_usage.gif)
 
 
 Usage
