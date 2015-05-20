@@ -80,7 +80,7 @@ function! s:shot_f(ft)
     elseif mode ==? 'v' || mode ==# "\<C-v>"
       return "\<Esc>" . 'gv' . cnt . a:ft . c
     elseif mode ==# 'no'
-      return "\<Esc>" . cnt . v:operator . a:ft . c
+      return "\<Esc>" . '"' . v:register . cnt . v:operator . a:ft . c
     endif
   finally
     call s:finalize()
