@@ -128,7 +128,7 @@ function! s:highlight_one_of_each_char(forward, count)
     let s:max_count = char_dict[cur_char] > s:max_count ? char_dict[cur_char] : s:max_count
   endfor
 
-  redraw!
+  redraw
 endfunction
 
 function! s:disable_highlight()
