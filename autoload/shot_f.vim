@@ -76,7 +76,10 @@ function! s:shot_f(ft)
     endwhile
 
     if mode ==# 'n'
-      return "\<Esc>" . cnt . a:ft . c
+      if v:count >= 1
+        return "\<Esc>" . cnt . a:ft . c
+      endif
+      return cnt . a:ft . c
     elseif mode ==? 'v' || mode ==# "\<C-v>"
       return "\<Esc>" . 'gv' . cnt . a:ft . c
     elseif mode ==# 'no'
