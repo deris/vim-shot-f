@@ -83,6 +83,26 @@ g:shot_f_decrement_count_key			*g:shot_f_decrement_count_key*
   by |[count]|.
 
 
+g:shot_f_highlight_graph			*g:shot_f_highlight_graph*
+
+  Type: |String|
+  Default: `"ctermfg=red ctermbg=NONE cterm=bold guifg=red guibg=NONE gui=bold"`
+
+  Defines the highlight style for graphical characters.
+
+  See |highlight-args| for the {key}={arg} arguments.
+
+
+g:shot_f_highlight_blank			*g:shot_f_highlight_blank*
+
+  Type: |String|
+  Default: `"ctermfg=NONE ctermbg=red cterm=NONE guifg=NONE guibg=red gui=NONE"`
+
+  Defines the highlight style for blank characters (space and tab).
+
+  See |highlight-args| for the {key}={arg} arguments.
+
+
 ==============================================================================
 EXAMPLES					*shot-f-examples*
 
