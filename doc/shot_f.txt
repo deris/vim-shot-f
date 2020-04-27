@@ -53,62 +53,79 @@ INTERFACE					*shot-f-interface*
 ------------------------------------------------------------------------------
 MAPPINGS					*shot-f-mappings*
 
+These mappings are defined in Normal mode, Visual mode
+and Operator-pending mode:
+
 <Plug>(shot-f-f)				*<Plug>(shot-f-f)*
 <Plug>(shot-f-F)				*<Plug>(shot-f-F)*
 <Plug>(shot-f-t)				*<Plug>(shot-f-t)*
 <Plug>(shot-f-T)				*<Plug>(shot-f-T)*
-			These mappings are defined in Normal mode, Visual mode
-			and Operator-pending mode.
 
 
 ------------------------------------------------------------------------------
 VARIABLES					*shot-f-variables*
 
-g:shot_f_increment_count_key   (default: "\<CR>")
-			If you type this key after executing mapping key,
-			you can increment |[count]| of mapping key
-g:shot_f_decrement_count_key   (default: "\<BS>")
-			If you type this key after executing mapping key,
-			you can decrement [|count]| of mapping key
+g:shot_f_increment_count_key			*g:shot_f_increment_count_key*
+
+  Type: |String|
+  Default: `"\<CR>"`
+
+  Typing this key after executing the mapping key increments the mapping key
+  by |[count]|.
+
+
+g:shot_f_decrement_count_key			*g:shot_f_decrement_count_key*
+
+  Type: |String|
+  Default: `"\<BS>"`
+
+  Typing this key after executing the mapping key decrements the mapping key
+  by |[count]|.
 
 
 ==============================================================================
 EXAMPLES					*shot-f-examples*
 
-" default mapping is following
-nmap f  <Plug>(shot-f-f)
-nmap F  <Plug>(shot-f-F)
-nmap t  <Plug>(shot-f-t)
-nmap T  <Plug>(shot-f-T)
-xmap f  <Plug>(shot-f-f)
-xmap F  <Plug>(shot-f-F)
-xmap t  <Plug>(shot-f-t)
-xmap T  <Plug>(shot-f-T)
-omap f  <Plug>(shot-f-f)
-omap F  <Plug>(shot-f-F)
-omap t  <Plug>(shot-f-t)
-omap T  <Plug>(shot-f-T)
+The default mappings are as follows:
+>
+  nmap f  <Plug>(shot-f-f)
+  nmap F  <Plug>(shot-f-F)
+  nmap t  <Plug>(shot-f-t)
+  nmap T  <Plug>(shot-f-T)
+  xmap f  <Plug>(shot-f-f)
+  xmap F  <Plug>(shot-f-F)
+  xmap t  <Plug>(shot-f-t)
+  xmap T  <Plug>(shot-f-T)
+  omap f  <Plug>(shot-f-f)
+  omap F  <Plug>(shot-f-F)
+  omap t  <Plug>(shot-f-t)
+  omap T  <Plug>(shot-f-T)
+<
 
-" If you want change mapping, you can write following settings in your vimrc
-let g:shot_f_no_default_key_mappings = 1
-nmap ,f  <Plug>(shot-f-f)
-nmap ,F  <Plug>(shot-f-F)
-nmap ,t  <Plug>(shot-f-t)
-nmap ,T  <Plug>(shot-f-T)
-xmap ,f  <Plug>(shot-f-f)
-xmap ,F  <Plug>(shot-f-F)
-xmap ,t  <Plug>(shot-f-t)
-xmap ,T  <Plug>(shot-f-T)
-omap ,f  <Plug>(shot-f-f)
-omap ,F  <Plug>(shot-f-F)
-omap ,t  <Plug>(shot-f-t)
-omap ,T  <Plug>(shot-f-T)
+If you want to change the mappings, you can use the following settings in
+your vimrc:
+>
+  let g:shot_f_no_default_key_mappings = 1
+  nmap ,f  <Plug>(shot-f-f)
+  nmap ,F  <Plug>(shot-f-F)
+  nmap ,t  <Plug>(shot-f-t)
+  nmap ,T  <Plug>(shot-f-T)
+  xmap ,f  <Plug>(shot-f-f)
+  xmap ,F  <Plug>(shot-f-F)
+  xmap ,t  <Plug>(shot-f-t)
+  xmap ,T  <Plug>(shot-f-T)
+  omap ,f  <Plug>(shot-f-f)
+  omap ,F  <Plug>(shot-f-F)
+  omap ,t  <Plug>(shot-f-t)
+  omap ,T  <Plug>(shot-f-T)
+<
 
-" If you want change key for incrementing or decrementing count,
-" you can write following settings in your vimrc
-let g:shot_f_increment_count_key = "\<C-k>"
-let g:shot_f_decrement_count_key = "\<C-j>"
-
+If you want to change the key for incrementing or decrementing count, you can
+use the following settings in your vimrc:
+>
+  let g:shot_f_increment_count_key = "\<C-k>"
+  let g:shot_f_decrement_count_key = "\<C-j>"
+<
 
 ==============================================================================
 BUGS						*shot-f-bugs*
