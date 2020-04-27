@@ -159,15 +159,24 @@ function! s:unexpected_character(c)
   return a:c ==# "\x80\xfd`"
 endfunction
 
+function! s:register_highlights()
+  if !exists('g:shot_f_highlight_graph')
+    let g:shot_f_highlight_graph = 'ctermfg=red ctermbg=NONE cterm=bold guifg=red guibg=NONE gui=bold'
+  endif
+  if !exists('g:shot_f_highlight_blank')
+    let g:shot_f_highlight_blank = 'ctermfg=NONE ctermbg=red cterm=NONE guifg=NONE guibg=red gui=NONE'
+  endif
+  execute 'highlight default ShotFGraph ' . g:shot_f_highlight_graph
+  execute 'highlight default ShotFBlank ' . g:shot_f_highlight_blank
+  highlight link ShotFCursor Cursor
+endfunction
+
 augroup plugin-shot-f-highlight
   autocmd!
-  autocmd ColorScheme * highlight default ShotFGraph ctermfg=red ctermbg=NONE cterm=bold guifg=red guibg=NONE gui=bold
-  autocmd ColorScheme * highlight default ShotFBlank ctermfg=NONE ctermbg=red cterm=NONE guifg=NONE guibg=red gui=NONE
+  autocmd ColorScheme * call <sid>register_highlights()
 augroup END
 
-highlight default ShotFGraph ctermfg=red ctermbg=NONE cterm=bold guifg=red guibg=NONE gui=bold
-highlight default ShotFBlank ctermfg=NONE ctermbg=red cterm=bold guifg=NONE guibg=red gui=bold
-highlight link ShotFCursor Cursor
+call s:register_highlights()
 
 "}}}
 
