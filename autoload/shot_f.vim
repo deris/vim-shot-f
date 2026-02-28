@@ -115,7 +115,7 @@ function! s:highlight_one_of_each_char(forward, count)
   let start_col = col + 1
   let end_col   = col - 1
   if (a:forward && start_col > len(line) - 1) ||
-    \(!a:forward && end_col + 1 < 0)
+    \(!a:forward && end_col < 0)
     return
   endif
 
