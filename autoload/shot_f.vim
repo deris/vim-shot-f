@@ -124,8 +124,11 @@ function! s:highlight_one_of_each_char(forward, count)
   let char_dict = {}
   for cur_col in list
     let cur_char = line[cur_col]
+    if cur_char !~ '[\x01-\x7E]'
+      continue
+    endif
     let char_dict[cur_char] = get(char_dict, cur_char, 0) + 1
-    if cur_char =~ '[\x01-\x7E]' && char_dict[cur_char] == a:count
+    if char_dict[cur_char] == a:count
       call matchadd(cur_char =~ '[[:blank:]]' ? 'ShotFBlank' : 'ShotFGraph', printf('\%%%dl\%%%dc', lnum, cur_col+1))
     endif
     let s:max_count = char_dict[cur_char] > s:max_count ? char_dict[cur_char] : s:max_count
